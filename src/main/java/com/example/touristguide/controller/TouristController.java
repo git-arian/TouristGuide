@@ -1,8 +1,6 @@
 package com.example.touristguide.controller;
 import com.example.touristguide.model.TouristAttraction;
 import com.example.touristguide.service.TouristService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -59,30 +57,26 @@ public class TouristController {
         return "redirect:/attractions";
     }
 
-@GetMapping("/{name}/edit")
-public String editAttraction(@PathVariable String name, Model model) {
+    @GetMapping("/{name}/edit")
+    public String editAttraction(@PathVariable String name, Model model) {
         TouristAttraction a = service.getByName(name);
         if (a == null) return "error";
         model.addAttribute("attraction", a);
         model.addAttribute("cities", service.getCities());
         model.addAttribute("allTags", service.getTags());
         return "updateAttraction";
-}
+    }
 
-@PostMapping("/update")
-public String updateAttraction(@ModelAttribute TouristAttraction form) {
+    @PostMapping("/update")
+    public String updateAttraction(@ModelAttribute TouristAttraction form) {
         if (form.getTags() == null) form.setTags(new ArrayList<>());
         service.updateAttraction(form.getName(), form);
         return "redirect:/attractions";
-}
-
-@PostMapping("/delete/{name}")
-@ResponseBody
-public ResponseEntity<Void> deleteAttraction(@PathVariable String name) {
-    boolean deleted = service.deleteAttraction(name);
-    if (deleted) {
-        return ResponseEntity.noContent().build();
     }
-    return ResponseEntity.notFound().build();
-}
+
+    @GetMapping("/{name}/delete")
+    public String deleteAttraction(@PathVariable String name) {
+        service.deleteAttraction(name);
+        return "redirect:/attractions";
+    }
 }

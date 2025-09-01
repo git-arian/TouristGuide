@@ -45,16 +45,6 @@ public class TouristRepository {
                 "$", "$$", "$$$", "Free", "History & culture");
     }
 
-    public List<TouristAttraction> getByCity(String city) {
-        List<TouristAttraction> result = new ArrayList<>();
-        for (TouristAttraction a : data) {
-            if (a.getCity().equalsIgnoreCase(city)) {
-                result.add(a);
-            }
-        }
-        return result;
-    }
-
     public TouristAttraction saveAttraction(TouristAttraction attraction) {
         data.add(attraction);
         return attraction;
@@ -67,7 +57,7 @@ public class TouristRepository {
                 a.setCity(u.getCity());
                 List<String> newTags = (u.getTags() == null) ? List.of() : u.getTags();
                 // u.getTags() er null? ja: brug en tom liste i stedet (List.of()). nej: brug gamle tags
-                a.getTags().clear(); // fjerne gamle
+                a.getTags().clear(); // fjerner gamle tags
                 a.getTags().addAll(newTags); // tilføjer de nye
                 return a;
             }

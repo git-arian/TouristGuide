@@ -28,10 +28,6 @@ public class TouristService {
         return repository.getByName(name);
     }
 
-    public List<TouristAttraction> getByCity(String city) {
-        return repository.getByCity(city);
-    }
-
     public TouristAttraction saveAttraction(TouristAttraction attraction){
         return repository.saveAttraction(attraction);
     }
