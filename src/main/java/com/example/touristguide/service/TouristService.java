@@ -24,8 +24,8 @@ public class TouristService {
         return repository.getByCity(city);
     }
 
-    public TouristAttraction createAttraction(TouristAttraction attraction){
-        return repository.createAttraction(attraction);
+    public TouristAttraction saveAttraction(TouristAttraction attraction){
+        return repository.saveAttraction(attraction);
     }
 
     public TouristAttraction updateAttraction(String name, TouristAttraction updatedAttraction){

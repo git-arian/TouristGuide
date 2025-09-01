@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Add attraction</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Add attraction</h1>
+
+    <form class="form-form" action="/attractions/save" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="3"></textarea>
+
+        <label for="city">City</label>
+        <select id="city" name="city" required>
+            <option value="">-- choose --</option>
+            <option value="cph">Copenhagen</option>
+            <option value="klampenborg">Klampenborg</option>
+            <option value="hellerup">Hellerup</option>
+            <option value="helsingør">Helsingør</option>
+            <option value="lyngby">Lyngby</option>
+        </select>
+
+        <fieldset>
+            <legend>Tags</legend>
+            <label><input type="checkbox" name="tags" value="Family"> Fun for the whole family</label>
+            <label><input type="checkbox" name="tags" value="Kids"> Kids friendly</label>
+            <label><input type="checkbox" name="tags" value="Culture"> Culture</label>
+
+            <label><input type="checkbox" name="tags" value="$$$" id="price-3"> $$$</label>
+            <label><input type="checkbox" name="tags" value="$$" id="price-2"> $$</label>
+            <label><input type="checkbox" name="tags" value="$" id="price-1"> $</label>
+
+            <label><input type="checkbox" name="tags" value="Free"> Free</label>
+        </fieldset>
+
+        <button type="submit">Save</button>
+        <a href="/attractions">Cancel</a>
+    </form>
+</div>
+
+</body>
+</html>

@@ -64,3 +64,44 @@ h1 { font-size: 1.5em;
 
 .tags-return-btn:hover { background: #f7f7f7; }
 
+/* form.html */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.088);
+}
+
+.form-form input,
+.form-form textarea,
+.form-form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.form-form button {
+    margin-top: 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.form-form button:hover {
+    background: #0056b3;
+}

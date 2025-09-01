@@ -12,7 +12,7 @@
 
 <table class ="attractions-table">
     <thead>
-    <tr><th>Name</th><th>City</th><th>Description</th> <!--<th></th>--> </tr>
+    <tr><th>Name</th><th>City</th><th>Description</th></tr>
     </thead>
     <tbody>
     <tr th:each="a : ${attractions}">
@@ -20,13 +20,14 @@
         <td th:text="${a.city}">City</td>
         <td th:text="${a.description}">Description</td>
         <td>
-        <a th:href="@{/attractions/{name}/tags(name=${a.name})}">
-            <button>Tags</button>
-        </a>
+            <a class="btn" th:href="@{/attractions/{name}/tags(name=${a.name})}">
+                View
+            </a>
         </td>
     </tr>
     </tbody>
 </table>
+<p><a class="btn" href="/attractions/add">+ Add attraction</a></p>
 </body>
 </html>
 

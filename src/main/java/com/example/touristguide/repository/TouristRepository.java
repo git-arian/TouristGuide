@@ -18,7 +18,7 @@ public class TouristRepository {
                 new ArrayList<>(List.of("Fine dining", "$$$"))));
 
         data.add(new TouristAttraction("Rosenborg Castle",
-                "A renaissance caslte built in 1606", "København",
+                "A renaissance castle built in 1606", "København",
                 new ArrayList<>(List.of("History & culture", "Kids friendly", "$"))));
     }
 
@@ -45,7 +45,7 @@ public class TouristRepository {
         return result;
     }
 
-    public TouristAttraction createAttraction(TouristAttraction attraction) {
+    public TouristAttraction saveAttraction(TouristAttraction attraction) {
         data.add(attraction);
         return attraction;
     }

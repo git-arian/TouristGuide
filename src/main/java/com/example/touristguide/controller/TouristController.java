@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -37,15 +39,22 @@ public class TouristController {
         return "tags";
     }
 
-@PostMapping("/add")
-@ResponseBody
-public ResponseEntity<TouristAttraction> createAttraction(@RequestBody TouristAttraction attraction) {
-    TouristAttraction saved = service.createAttraction(attraction);
-    if (saved == null) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    @GetMapping("/add")
+    public String showAddForm() {
+        return "form";
     }
-    return new ResponseEntity<>(saved, HttpStatus.CREATED);
-}
+
+    @PostMapping("/save")
+    public String saveAttraction(@RequestParam String name,
+                                 @RequestParam String description,
+                                 @RequestParam String city,
+                                 @RequestParam(required = false) List<String> tags) {
+        // hvis ingen tags valg, håndterer vi det nu. Derfor (required=false) i parameter
+        if (tags == null) tags = new ArrayList<>(); // tom
+        TouristAttraction a = new TouristAttraction(name, description, city, tags);
+        service.saveAttraction(a);
+        return "redirect:/attractions";
+    }
 
 @PostMapping("/update/{name}")
 @ResponseBody
