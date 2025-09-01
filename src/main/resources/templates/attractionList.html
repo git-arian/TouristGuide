@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Attractions</title>
+    <link th:href="@{/main.css}" rel="stylesheet">
+</head>
+
+<body>
+<h1>An overview of all attractions currently on our page</h1>
+
+<table>
+    <thead>
+    <tr><th>Name</th><th>City</th><th>Description</th> <!--<th></th>--> </tr>
+    </thead>
+    <tbody>
+    <tr th:each="a : ${attractions}">
+        <td th:text="${a.name}">Name</td>
+        <td th:text="${a.city}">City</td>
+        <td th:text="${a.description}">Description</td>
+        <!-- <td th:text="${a.tags}">Tags</td> -->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+<!-- <a th:href="@{/attractions}">All attractions</a> Peger på vores endpoint /attractions. fx til homepage.-->

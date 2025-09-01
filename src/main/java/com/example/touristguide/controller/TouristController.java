@@ -4,6 +4,7 @@ import com.example.touristguide.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -16,11 +17,23 @@ public class TouristController {
         this.service = service;
     }
 
+    /*
     @GetMapping
     @ResponseBody
-    public ResponseEntity<List<TouristAttraction>> getAllAttractions(){
+    public ResponseEntity<List<TouristAttraction>> getAllAttractions() {
         List<TouristAttraction> all = service.getAllAttractions();
         return ResponseEntity.ok(all);
+    }
+    I Del 2 fjernes @ResponseBody og ResponseEntity, da der nu ikke skal returneres JSON
+
+    Nu bruger vi Thymeleaf, hvor vi i stedet returner et view (html side) i stedet for JSON.
+    */
+
+    @GetMapping
+    public String showAllAttractions(Model model) { // Model = container, bruges til at sende data til view
+        List<TouristAttraction> all = service.getAllAttractions(); // henter alle attraktioner fra service
+        model.addAttribute("attractions", all); // lægger listen i model under navnet "attractions"
+        return "attractionList"; // returnerer Thymeleaf-viewet templates/attractionList.html
     }
 
     @GetMapping("/name/{name}")
