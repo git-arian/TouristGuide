@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tags</title>
+    <link th:href="@{/main.css}" rel="stylesheet">
+</head>
+
+<body>
+<div class="tags-container">
+    <h1 class="tags-title" th:text="${attraction.name}">Attraction</h1>
+
+    <ul class="tags" th:if="${!#lists.isEmpty(tags)}">
+        <li th:each="t : ${tags}" th:text="${t}">tag</li>
+    </ul>
+
+    <p class="tags-empty" th:if="${#lists.isEmpty(tags)}">Ingen tags endnu</p>
+
+    <a class="tags-return-btn" th:href="@{/attractions}">Tilbage</a>
+</div>
+</body>
+</html>

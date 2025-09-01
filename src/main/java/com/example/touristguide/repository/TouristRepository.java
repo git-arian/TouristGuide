@@ -6,27 +6,33 @@ import java.util.List;
 
 @Repository
 public class TouristRepository {
-    private final ArrayList<TouristAttraction> data = new ArrayList<>();
+    private final List<TouristAttraction> data = new ArrayList<>();
 
     public TouristRepository() {
-        data.add(new TouristAttraction("Tivoli", "Forlystelspark midt i KBH, og DK's mest besøgte turistattraktion med 4m årlige besøg.", "cph"));
-        data.add(new TouristAttraction("Strøget", "Berømt og livlig gågade i indre by.", "cph"));
-        data.add(new TouristAttraction("Eiffeltårnet", "Populært turistmål, opført i 1889 på 312m, og var verdens højeste bygning over 40 år.", "paris"));
-        data.add(new TouristAttraction("Louvre", "Enormt museum i Paris, med en samling på 38000+ genstande fra fortiden til det 21. århundrede, som fx Mona Lisa.", "paris"));
+        data.add(new TouristAttraction("Tivoli",
+                "Second oldest amusement park in the world", "København",
+                new ArrayList<>(List.of("Kids friendly", "Fun for the whole family", "$$"))));
+
+        data.add(new TouristAttraction("Geranium",
+                "3 star Michelin restaurant", "København",
+                new ArrayList<>(List.of("Fine dining", "$$$"))));
+
+        data.add(new TouristAttraction("Rosenborg Castle",
+                "A renaissance caslte built in 1606", "København",
+                new ArrayList<>(List.of("History & culture", "Kids friendly", "$"))));
     }
 
-    public ArrayList<TouristAttraction> getAllAttractions() {
+    public List<TouristAttraction> getAllAttractions() {
         return data;
     }
 
-    public List<TouristAttraction> getByName(String name) {
-        List<TouristAttraction> result = new ArrayList<>();
+    public TouristAttraction getByName(String name) {
         for (TouristAttraction a : data) {
             if (a.getName().equalsIgnoreCase(name)) {
-                result.add(a);
+                return a;
             }
         }
-        return result; //
+        return null;
     }
 
     public List<TouristAttraction> getByCity(String city) {
