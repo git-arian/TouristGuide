@@ -40,7 +40,10 @@ public class TouristController {
     }
 
     @GetMapping("/add")
-    public String showAddForm() {
+    public String showAddForm(Model model) {
+        model.addAttribute("cities", service.getCities());
+        model.addAttribute("allTags", service.getTags());
+        model.addAttribute("attraction", new TouristAttraction());
         return "form";
     }
 

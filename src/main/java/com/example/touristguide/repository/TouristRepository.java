@@ -35,6 +35,16 @@ public class TouristRepository {
         return null;
     }
 
+    public List<String> getCities() {
+        return List.of("Copenhagen", "Lyngby", "Klampenborg", "Aarhus", "Aalborg");
+
+    }
+
+    public List<String> getTags() {
+        return List.of("Fine dining", "Kids friendly", "Fun for the whole family",
+                "$", "$$", "$$$", "Free", "History & culture");
+    }
+
     public List<TouristAttraction> getByCity(String city) {
         List<TouristAttraction> result = new ArrayList<>();
         for (TouristAttraction a : data) {
