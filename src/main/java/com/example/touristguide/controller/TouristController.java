@@ -80,3 +80,13 @@ public class TouristController {
         return "redirect:/attractions";
     }
 }
+
+/*
+Ekstra ogpaver til senere:
+- Forbedre HTML & CSS
+
+Implementer mulighed for registrering af billetpris for de attraktioner,
+hvor der skal betales entré
+
+Der kan vælges mellem at få pris vist i DKK eller EUR.
+ */
