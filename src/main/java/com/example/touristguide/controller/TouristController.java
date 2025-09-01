@@ -69,6 +69,13 @@ public String editAttraction(@PathVariable String name, Model model) {
         return "updateAttraction";
 }
 
+@PostMapping("/update")
+public String updateAttraction(@ModelAttribute TouristAttraction form) {
+        if (form.getTags() == null) form.setTags(new ArrayList<>());
+        service.updateAttraction(form.getName(), form);
+        return "redirect:/attractions";
+}
+
 @PostMapping("/delete/{name}")
 @ResponseBody
 public ResponseEntity<Void> deleteAttraction(@PathVariable String name) {

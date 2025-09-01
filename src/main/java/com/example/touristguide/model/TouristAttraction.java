@@ -41,15 +41,11 @@ public class TouristAttraction {
         this.city = city;
     }
 
-    public void addTags(String tagToAdd) {
-        tags.add(tagToAdd);
-    }
-
-    public void deleteTags(String tagToDelete) {
-        tags.remove(tagToDelete);
-    }
-
     public List<String> getTags() {
         return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }
