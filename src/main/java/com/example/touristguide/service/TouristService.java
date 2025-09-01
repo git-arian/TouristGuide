@@ -24,7 +24,6 @@ public class TouristService {
         return repository.getTags();
     }
 
-
     public TouristAttraction getByName(String name) {
         return repository.getByName(name);
     }

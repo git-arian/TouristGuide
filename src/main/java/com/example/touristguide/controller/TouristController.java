@@ -52,21 +52,21 @@ public class TouristController {
                                  @RequestParam String description,
                                  @RequestParam String city,
                                  @RequestParam(required = false) List<String> tags) {
-        // hvis ingen tags valg, håndterer vi det nu. Derfor (required=false) i parameter
+        // hvis ingen tags valgt, håndterer vi det nu. Derfor (required=false) i parameter, ellers kommer der en error
         if (tags == null) tags = new ArrayList<>(); // tom
         TouristAttraction a = new TouristAttraction(name, description, city, tags);
         service.saveAttraction(a);
         return "redirect:/attractions";
     }
 
-@PostMapping("/update/{name}")
-@ResponseBody
-public ResponseEntity<TouristAttraction> updateAttraction(@PathVariable String name, @RequestBody TouristAttraction updated) {
-    TouristAttraction saved = service.updateAttraction(name, updated);
-    if (saved == null) {
-        return ResponseEntity.notFound().build();
-    }
-    return ResponseEntity.ok(saved);
+@GetMapping("/{name}/edit")
+public String editAttraction(@PathVariable String name, Model model) {
+        TouristAttraction a = service.getByName(name);
+        if (a == null) return "error";
+        model.addAttribute("attraction", a);
+        model.addAttribute("cities", service.getCities());
+        model.addAttribute("allTags", service.getTags());
+        return "updateAttraction";
 }
 
 @PostMapping("/delete/{name}")
